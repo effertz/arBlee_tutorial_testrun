@@ -650,3 +650,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IndicatorIcon: {fileID: 787882028}
+  ObjectToPlacePrefab: {fileID: 4648703694499103269, guid: 9ddfb491a81f24cbd8f916e1e56c0f0d, type: 3}

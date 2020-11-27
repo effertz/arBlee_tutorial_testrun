@@ -6,6 +6,8 @@ using UnityEngine.XR.ARSubsystems;
 public class PlacementIndicator : MonoBehaviour
 {
     public GameObject IndicatorIcon;
+    public GameObject ObjectToPlacePrefab;
+    private GameObject objectToPlaceInstance;
 
     private Pose placementPose;
     private bool placementPoseIsValid = false;
@@ -32,20 +34,30 @@ public class PlacementIndicator : MonoBehaviour
         if (aRRaycastManager == null) Debug.LogError("aRRaycastManager is NULL");
         if (aRPlaneManager == null) Debug.LogError("aRPlaneManager is NULL");
         if (IndicatorIcon == null) Debug.LogError("Indicator is NULL");
+        if (ObjectToPlacePrefab == null) Debug.LogError("ObjectToPlacePrefab is NULL");
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateGamePlacementPose();
-        UpdateGamePlacementIndicator();
+        //if (objectToPlaceInstance == null)
+        { // ones placed cannot be moved
+            UpdateGamePlacementPose();
+            UpdateGamePlacementIndicator();
+
+            if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                PlaceObject();
+                IndicatorIcon.SetActive(false);
+            }
+        }
     }
 
     void UpdateGamePlacementPose()
     {
         if (aRRaycastManager != null && Camera.current != null)
         {
-            // shoot raycast from the center of the screen
+            // shoot a raycast from the center of the screen
             Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
             List<ARRaycastHit> hits = new List<ARRaycastHit>();
             aRRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
@@ -83,5 +95,10 @@ public class PlacementIndicator : MonoBehaviour
         {
             IndicatorIcon.SetActive(false);
         }
+    }
+
+    void PlaceObject()
+    {
+        objectToPlaceInstance = Instantiate(ObjectToPlacePrefab, placementPose.position, placementPose.rotation);
     }
 }
