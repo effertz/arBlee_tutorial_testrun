@@ -40,16 +40,12 @@ public class PlacementIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (objectToPlaceInstance == null)
-        { // ones placed cannot be moved
-            UpdateGamePlacementPose();
-            UpdateGamePlacementIndicator();
+        UpdateGamePlacementPose();
+        UpdateGamePlacementIndicator();
 
-            if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                PlaceObject();
-                IndicatorIcon.SetActive(false);
-            }
+        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            PlaceObject();
         }
     }
 
