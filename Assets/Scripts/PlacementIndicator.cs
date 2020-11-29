@@ -3,11 +3,9 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class PlacementIndicator : MonoBehaviour
-{
+public class PlacementIndicator : MonoBehaviour {
     public GameObject IndicatorIcon;
-    public GameObject ObjectToPlacePrefab;
-    private GameObject objectToPlaceInstance;
+    public GameObject ObjectToPlace;
 
     private Pose placementPose;
     private bool placementPoseIsValid = false;
@@ -17,42 +15,38 @@ public class PlacementIndicator : MonoBehaviour
     private ARPlaneManager aRPlaneManager;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // get components
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         aRPlaneManager = FindObjectOfType<ARPlaneManager>();
         CheckAllObjects();
 
-        // hide indicator
+        // hide indicator and object to place
         IndicatorIcon.SetActive(false);
+        ObjectToPlace.SetActive(false);
     }
 
 
-    void CheckAllObjects()
-    {
+    void CheckAllObjects() {
         if (aRRaycastManager == null) Debug.LogError("aRRaycastManager is NULL");
         if (aRPlaneManager == null) Debug.LogError("aRPlaneManager is NULL");
         if (IndicatorIcon == null) Debug.LogError("Indicator is NULL");
-        if (ObjectToPlacePrefab == null) Debug.LogError("ObjectToPlacePrefab is NULL");
+        if (ObjectToPlace == null) Debug.LogError("objectToPlace is NULL");
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         UpdateGamePlacementPose();
         UpdateGamePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
+        if (placementPoseIsValid && Input.touchCount > 0 &&
+            Input.GetTouch(0).phase == TouchPhase.Began) {
             PlaceObject();
         }
     }
 
-    void UpdateGamePlacementPose()
-    {
-        if (aRRaycastManager != null && Camera.current != null)
-        {
+    void UpdateGamePlacementPose() {
+        if (aRRaycastManager != null && Camera.current != null) {
             // shoot a raycast from the center of the screen
             Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
             List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -61,11 +55,9 @@ public class PlacementIndicator : MonoBehaviour
             placementPoseIsValid = false;
 
             // if we hit a AR plane, update the position and rotation 
-            foreach (ARRaycastHit hit in hits)
-            {
+            foreach (ARRaycastHit hit in hits) {
                 ARPlane plane = aRPlaneManager.GetPlane(hit.trackableId);
-                if (plane != null)
-                {
+                if (plane != null) {
                     placementPoseIsValid = true;
                     placementPose = hit.pose;
 
@@ -82,19 +74,16 @@ public class PlacementIndicator : MonoBehaviour
 
     void UpdateGamePlacementIndicator()
     {
-        if (placementPoseIsValid)
-        {
+        if (placementPoseIsValid) {
             IndicatorIcon.SetActive(true);
             transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
-        }
-        else
-        {
+        } else {
             IndicatorIcon.SetActive(false);
         }
     }
 
-    void PlaceObject()
-    {
-        objectToPlaceInstance = Instantiate(ObjectToPlacePrefab, placementPose.position, placementPose.rotation);
+    void PlaceObject() {
+        ObjectToPlace.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+        ObjectToPlace.SetActive(true);
     }
 }
