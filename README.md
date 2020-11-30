@@ -7,7 +7,7 @@ This tutorial was created using a MacBook and iPhone, but you can also use your 
 
 So let’s start:
 
-## Environment Setup - Install required 
+## Environment Setup - Install required software
 
 To setup your computer for this project follow the steps below or ensure that you have the latest versions of Unity, Xcode and Visual Studio for Mac.
 1. Install **Unity** on your computer:
@@ -49,7 +49,7 @@ Next step is to get to know **XR**. XR is an umbrella term encompassing **augmen
 
 **Augmented Reality AR** is reality augmented (or enhanced) with virtual items. Unity Editor provides a special module to support AR: AR Foundation. [What is Unity AR Foundation?](https://www.youtube.com/watch?v=FGh7f-PaGQc) is a very good tutorial about AR in Unity. It also shows how to **setup AR in Unity** and how to **create markers in AR**, which is the first step to be able to place a character of your choice into the environment around you.
 
-I'm strongly relaying on the AR Tutorial, but not following it completely. Therefore, feel free to watch it, it is very helpful, but for the app we are creating, follow the steps described below:
+I'm strongly relaying on the AR Tutorial, but not following it completely. Therefore, feel free to watch it, it is very helpful, but for the app we are creating, follow the steps described below.
 
 First, we will **setup AR components** in your project:
 
