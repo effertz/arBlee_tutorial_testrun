@@ -25,7 +25,7 @@ To setup your computer for this project follow the steps below or ensure that yo
 
 In this tutorial, we will create a mobile application, but if you are new to Unity, you might consider creating a **simple desktop project**. This will help you to get familiar with Unity Editor navigation and functionality. [Get started with Unity - Creator Kit: Beginner Code](https://learn.unity.com/tutorial/get-started-with-creator-kit-beginner-code) and [Create with code](https://learn.unity.com/course/create-with-code) are 2 tutorials, which cover creating basic desktop applications.
 
-There are a few things needed to setup a **project for a mobile application** with Unity. The following instructions will guide you through them:
+There are a few things needed to setup a **project for a mobile application** with Unity. The following instructions will guide you through them (Note: for **Android setup** follow the tutorial on [Unity learn](https://learn.unity.com/tutorial/building-for-mobile)):
 
 1. In Unity Editor go to *File* → *Build Settings*, select *iOS* from the platform list below and press *Switch Platform*. Wait for the switch to complete and close the *Build Settings* dialog. From now you will be building for your iPhone.
 2. Go to *Edit* → *Project Settings* → *Player* and enter your *Product Name* and C*ompany Name*. These can be really anything, but try to be somewhat unique. Next select *iOS* tab and *Other Settings*: make sure that *Auto Graphics API* is enabled. Set *Bundle Identifier* to *com.your Company Name.your Product Name* or anything else unique.
@@ -39,8 +39,6 @@ To **build** your mobile project for **iPhone**:
 5. Plugin your device to your computer and press the play icon to build.
 6. You might get an error when trying to run the application on your mobile device, a warning about an *Untrusted Enterprise Developer*. To fix this follow these [instructions](https://support.apple.com/en-us/HT204460).
 
-For Android and additional information check the following tutorial on Unity learn: [Building for mobile](https://learn.unity.com/tutorial/building-for-mobile).
-
 Now you can build and run your app on a mobile device, but your application is a bit boring. Let’s start changing that.
 
 ## Get to know XR and setup your project for it
@@ -51,7 +49,7 @@ Next step is to get to know **XR**. XR is an umbrella term encompassing **augmen
 
 I'm strongly relaying on the AR Tutorial, but not following it completely. Therefore, feel free to watch it, it is very helpful, but for the app we are creating, follow the steps described below.
 
-First, we will **setup AR components** in your project:
+First, we will **setup AR components** in your project (Note: for **Android** setup follow the instructions on [YouTube](https://www.youtube.com/watch?v=FGh7f-PaGQc) staring around minute 7:40):
 
 1. In Unity Editor go to *Edit* → *Project Settings* → *Player* and:
     1. add a *Camera Usage Description*, something like: “Enable to use AR Foundation”.
