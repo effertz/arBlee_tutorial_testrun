@@ -344,4 +344,6 @@ Now, we will add a **second animation**. This time, it will be an animation for 
 2. Import the walk animation to Unity:
     1. Drag and drop the downloaded animation to the *Characters* folder in *Project* window in the *Unity Editor*. 
     2. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
-3. Create a transition between the animations:
+3. Create a transition between animations: 
+    1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: ![Transition Between Idle And Walk](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png).
+    2. Select the one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
