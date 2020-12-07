@@ -374,7 +374,7 @@ Now, we will add a **second animation**. This time, it will be an animation for 
     ``` C#
     IndicatorIcon.SetActive(false);
     ```
-    3. And add an if statement to the Update method and save the script:
+    3. Add an *if-statement* to the *Update* method to prevent from running when not needed:
     ```C#
     void Update() {
         if (!ObjectToPlace.activeInHierarchy) {
@@ -388,7 +388,9 @@ Now, we will add a **second animation**. This time, it will be an animation for 
         }
     }
     ```
+    4. Save the script.
 
-Try your application again. 
+Try your application again. You will notice that your character is walking, but walking in place. No wonder, this is how we downloaded it. As a next step, we will adapt the *Movement* script to make the character move when the *Walk* animation is running.
+
 
 
