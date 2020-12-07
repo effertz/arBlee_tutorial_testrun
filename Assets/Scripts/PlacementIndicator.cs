@@ -36,12 +36,14 @@ public class PlacementIndicator : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        UpdateGamePlacementPose();
-        UpdateGamePlacementIndicator();
+        if (!ObjectToPlace.activeInHierarchy) {
+            UpdateGamePlacementPose();
+            UpdateGamePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 &&
-            Input.GetTouch(0).phase == TouchPhase.Began) {
-            PlaceObject();
+            if (placementPoseIsValid && Input.touchCount > 0 &&
+                Input.GetTouch(0).phase == TouchPhase.Began) {
+                PlaceObject();
+            }
         }
     }
 
@@ -85,5 +87,6 @@ public class PlacementIndicator : MonoBehaviour {
     void PlaceObject() {
         ObjectToPlace.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         ObjectToPlace.SetActive(true);
+        IndicatorIcon.SetActive(false);
     }
 }

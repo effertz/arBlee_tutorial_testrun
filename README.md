@@ -334,9 +334,14 @@ Build your application again and check how your character behaves.
 
 Now, we will add a **second animation**. This time, it will be an animation for walking. We will adapt the *PlacementIndicator* script so, that after the character is visible, the marker will disappear and a press on the screen will make the character walk.
 
-1. Download a walk animation from Mixamo: Go back to the [Mixamo](https://www.mixamo.com/) web page. While your character is still selected, select the *Animations* tab, search for *walk*, select one of the walk animations and press *Download*. In the *Download Settings* dialog make sure that:
-    1. *Format* is set to *FBX for Unity* and 
-    2. *Skin* to *Without Skin*.
+1. Download a walk animation from Mixamo: 
+    1. Go back to the [Mixamo](https://www.mixamo.com/) web page. 
+    2. While your character is still selected, select the *Animations* tab, search for *walk*, select one of the walk animations. 
+    3. Before pressing *Download* make sure the animation is *In Place*. There is a *In Place* checkbox under the *Download* button. Set it. 
+    4. Then press *Download*. In the *Download Settings* dialog set:
+        1. *Format* to *FBX for Unity* and 
+        2. *Skin* to *Without Skin*.
 2. Import the walk animation to Unity:
     1. Drag and drop the downloaded animation to the *Characters* folder in *Project* window in the *Unity Editor*. 
     2. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
+3. Create a transition between the animations:

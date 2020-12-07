@@ -1,27 +1,12 @@
 fileFormatVersion: 2
-guid: 7e5ae6befec31420f984a4ad67789cab
+guid: 8bb9947c4ca41416b84d820e8c139874
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: SpacePirate_diffuse
-    second: {fileID: 2800000, guid: 87427c06fbe5f47a58dac90ea67f7f86, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: SpacePirate_normal
-    second: {fileID: 2800000, guid: 6e13447172239484eabf5937d5ebe082, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: SpacePirate_specular
-    second: {fileID: 2800000, guid: 20953b7f2a2b4456c90dafad2f76f438, type: 3}
+    second: Female Walk
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -48,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Female Walk
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -90,9 +104,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 8bb9947c4ca41416b84d820e8c139874
-  - ef96733df1c9d434e828e84f414204a4
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
