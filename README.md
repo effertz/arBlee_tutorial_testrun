@@ -352,28 +352,30 @@ Now, we will add a **second animation**. This time, it will be an animation for 
 4. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
     1. First go to the *Scripts* folder under *Assets* in the *Hierarchy* window. Then right click on the folder, select *Create* → *C# Script* and rename it directly to *Movement*.
     2. Double click on the *Movement* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the existing code with and save it: 
-``` C#
-using UnityEngine;
+    ``` C#
+    using UnityEngine;
 
-public class Movement : MonoBehaviour {
-    public Animator _animator;
+    public class Movement : MonoBehaviour {
+        public Animator _animator;
 
-    void Update() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-            _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
+        void Update() {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+                _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
+            }
         }
     }
-}
-```  
+    ```
+
 5. Add the *Movement* script to the character game object: Select your character in the *Hierarchy* window, go to the *Inspector* window, press *Add Component*, search for the *Movement* script and select it. Open the *Animator* dropdown and select your character. Now, your script is connected with the *Animator* and can access the Animation parameter we specified above.
 6. There is still one thing we need to do: Change the behaviour in the *PlacementIndicator* script. You remember, it was placing the marker whenever you touch the screen. But now, we want that once the character is visible, the marker disappears, and the touch to control the character animation instead. The last part is already handled by the *Movement* script. Let's take care of the *PlacementIndicator* script. 
     1.  Double click on the *PlacementIndicator* script in the *Hierarchy* window to open it in *Visual Studio*.
-    2. Add the following line at the end of the *PlaceObject* method to make the marker invisible after the object was placed: 
-``` C#
-IndicatorIcon.SetActive(false);
-```
+    2. Add the following line at the end of the *PlaceObject* method to make the marker invisible after the object was placed:
+
+    ``` C#
+    IndicatorIcon.SetActive(false);
+    ```
     3. And add an if statement to the Update method and save the script:
-```C#
+    ```C#
     void Update() {
         if (!ObjectToPlace.activeInHierarchy) {
             UpdateGamePlacementPose();
@@ -385,7 +387,7 @@ IndicatorIcon.SetActive(false);
             }
         }
     }
-```
+    ```
 
 Try your application again. 
 
