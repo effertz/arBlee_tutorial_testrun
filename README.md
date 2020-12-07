@@ -332,7 +332,7 @@ Next we will **add** an idle **animation to** the **character** to make it stand
 
 Build your application again and check how your character behaves.
 
-Now, we will add a **second animation**. This time, it will be an animation for walking. We will adapt the *PlacementIndicator* script so, that after the character is visible, the marker will disappear and a press on the screen will make the character walk.
+Now, we will add a **second animation**. This time, it will be an animation for walking. We will adapt the *PlacementIndicator* script so, that after the character is visible, the marker will disappear and a touch on the screen will make the character walk.
 
 1. Download a walk animation from Mixamo: 
     1. Go back to the [Mixamo](https://www.mixamo.com/) web page. 
@@ -345,8 +345,48 @@ Now, we will add a **second animation**. This time, it will be an animation for 
     1. Drag and drop the downloaded animation to the *Characters* folder in *Project* window in the *Unity Editor*. 
     2. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
 3. Create a transition between animations: 
-    1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: ![Transition Between Idle And Walk](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png).
+    1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: ![Transition Between Idle And Walk](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png)
     2. Select one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
-    3. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. ![Transition Between Idle And Walk - Bool](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png).
-    4. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section. Select the + icon. It should automatically add the *IsWalking* parameter with value *true*.
-![Transition Between Idle And Walk - Bool2](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png).
+    3. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. ![Transition Between Idle And Walk - Bool](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png)
+    4. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: ![Transition Between Idle And Walk - Bool2](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png) Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
+4. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
+    1. First go to the *Scripts* folder under *Assets* in the *Hierarchy* window. Then right click on the folder, select *Create* → *C# Script* and rename it directly to *Movement*.
+    2. Double click on the *Movement* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the existing code with and save it: 
+``` C#
+using UnityEngine;
+
+public class Movement : MonoBehaviour {
+    public Animator _animator;
+
+    void Update() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+            _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
+        }
+    }
+}
+```  
+5. Add the *Movement* script to the character game object: Select your character in the *Hierarchy* window, go to the *Inspector* window, press *Add Component*, search for the *Movement* script and select it. Open the *Animator* dropdown and select your character. Now, your script is connected with the *Animator* and can access the Animation parameter we specified above.
+6. There is still one thing we need to do: Change the behaviour in the *PlacementIndicator* script. You remember, it was placing the marker whenever you touch the screen. But now, we want that once the character is visible, the marker disappears, and the touch to control the character animation instead. The last part is already handled by the *Movement* script. Let's take care of the *PlacementIndicator* script. 
+    1.  Double click on the *PlacementIndicator* script in the *Hierarchy* window to open it in *Visual Studio*.
+    2. Add the following line at the end of the *PlaceObject* method to make the marker invisible after the object was placed: 
+``` C#
+IndicatorIcon.SetActive(false);
+```
+    3. And add an if statement to the Update method and save the script:
+```C#
+    void Update() {
+        if (!ObjectToPlace.activeInHierarchy) {
+            UpdateGamePlacementPose();
+            UpdateGamePlacementIndicator();
+
+            if (placementPoseIsValid && Input.touchCount > 0 &&
+                Input.GetTouch(0).phase == TouchPhase.Began) {
+                PlaceObject();
+            }
+        }
+    }
+```
+
+Try your application again. 
+
+
