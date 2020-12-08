@@ -356,7 +356,13 @@ Now, we will add a **second animation**. This time, it will be an animation for 
     using UnityEngine;
 
     public class Movement : MonoBehaviour {
-        public Animator _animator;
+        Animator _animator;
+
+        void Start() {
+            _animator = GetComponent<Animator>();
+
+            if (_animator == null) Debug.LogError("_animator is NULL");
+        }
 
         void Update() {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
@@ -390,7 +396,44 @@ Now, we will add a **second animation**. This time, it will be an animation for 
     ```
     4. Save the script.
 
-Try your application again. You will notice that your character is walking, but walking in place. No wonder, this is how we downloaded it. As a next step, we will adapt the *Movement* script to make the character move when the *Walk* animation is running.
+Try your application again. You will notice that your character is walking, but walking in place. No wonder, this is how we downloaded it. As a next step, we will adapt the *Movement* script to **make the character move when the *Walk* animation** is running.
 
+1. One way to controll the character movement is by using the *CharacterController* component. Therefore add *CharacterController* component to your character in the *hierarchy* window.
+2. Now update the *Movement* script to use the *CharacterController* to make move your character forward:
+```C#
+using UnityEngine;
 
+public class Movement : MonoBehaviour {
+    float _speed = 0.5f;
 
+    Animator _animator;
+    CharacterController _controller;
+
+    void Start() {
+        _animator = GetComponent<Animator>();
+        _controller = GetComponent<CharacterController>();
+
+        if (_animator == null) Debug.LogError("_animator is NULL");
+        if (_controller == null) Debug.LogError("_controller is NULL");
+    }
+
+    void Update() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+            _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
+        }
+
+        if (_animator.GetBool("IsWalking")) MoveForward();
+    }
+
+    void MoveForward() {
+        Vector3 direction = new Vector3(0, 0, 1);
+        Vector3 velocity = direction * _speed;
+
+        velocity = transform.transform.TransformDirection(velocity);
+
+        _controller.Move(velocity * Time.deltaTime);
+    }
+}
+```
+3. Save the script.
+4. Run your application and test the speed of your character. Adjust the speed value in the *Movement* script to align forward movement of your character with the *Walk* animation and make it feel natural.

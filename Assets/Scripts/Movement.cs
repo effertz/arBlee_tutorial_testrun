@@ -3,12 +3,10 @@
 public class Movement : MonoBehaviour {
     float _speed = 0.5f;
 
-    // Controller & Manager
-    CharacterController _controller;
     Animator _animator;
+    CharacterController _controller;
 
-    void Start()
-    {
+    void Start() {
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
 
@@ -24,8 +22,7 @@ public class Movement : MonoBehaviour {
         if (_animator.GetBool("IsWalking")) MoveForward();
     }
 
-    void MoveForward()
-    {
+    void MoveForward() {
         Vector3 direction = new Vector3(0, 0, 1);
         Vector3 velocity = direction * _speed;
 
