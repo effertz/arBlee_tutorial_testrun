@@ -437,3 +437,10 @@ public class Movement : MonoBehaviour {
 ```
 3. Save the script.
 4. Run your application and test the speed of your character. Adjust the speed value in the *Movement* script to align forward movement of your character with the *Walk* animation and make it feel natural.
+
+<!-- blank line -->
+<figure class="video_container">
+  <iframe src="Docs/Screenshots/Movement.Forward.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+<!-- blank line -->
+
