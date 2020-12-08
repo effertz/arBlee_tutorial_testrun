@@ -440,7 +440,9 @@ public class Movement : MonoBehaviour {
 
 <!-- blank line -->
 <figure class="video_container">
-  <iframe src="Docs/Screenshots/Movement.Forward.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+  <video controls="true" allowfullscreen="true" poster="Docs/Screenshots/poster_image.png">
+    <source src="Docs/Screenshots/Movement.Forward.mp4" type="video/mp4">
+  </video>
 </figure>
 <!-- blank line -->
 
