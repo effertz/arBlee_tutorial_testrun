@@ -1,5 +1,5 @@
 # How to create an AR mobile application with Unity
-This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will spawn a character, a little fairy for example, into the environment around you.
+This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. 
 
 This collection of tutorials assumes that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
@@ -438,7 +438,7 @@ public class Movement : MonoBehaviour {
 3. Save the script.
 4. Run your application and test the speed of your character. Adjust the speed value in the *Movement* script to align forward movement of your character with the *Walk* animation and make it feel natural.
 
-[![Movement Forward Video](http://img.youtube.com/vi/wnLBhx_--CY/0.jpg)](http://www.youtube.com/watch?v=wnLBhx_--CY)
+[![Movement Forward Video](http://img.youtube.com/vi/eL_8jF1a4lk/0.jpg)](http://www.youtube.com/watch?v=eL_8jF1a4lk)
 
 ## Upcoming tutorials
 - Mobile UI elements
