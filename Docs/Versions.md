@@ -1,5 +1,12 @@
 # Versions
-* Unity: 2020.1.17f1
-* Xcode: 12.2 (12B45b)
-* iOS: 14.2 (test device: iPhone 11 Pro)
-* Visual Studio: 8.8.3
+
+### Software versions used to build for iPhone 11 Pro
+
+* Unity: 2020.2.0f1
+* Xcode: 12.3 (12C33)
+* Visual Studio 2019 for Mac: 8.8.4
+* iOS: 14.3
+
+### Software versions used to build for Android
+
+to be added ...
