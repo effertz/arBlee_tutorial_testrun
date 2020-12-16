@@ -9,35 +9,17 @@ So let’s start:
 
 ## Environment Setup - Install required software
 
-To setup your computer for this project follow the steps below or ensure that you have the latest versions of Unity, Xcode and Visual Studio for Mac.
-1. Install **Unity** on your computer:
-    1. Create an account on [https://unity.com/](https://unity.com/)
-    2. Download Unity Hub from [https://unity3d.com/get-unity/download](https://unity3d.com/get-unity/download). Unity Hub is an application which helps you creating projects and handling different Unity versions.
-    3. Open Unity Hub, login and download the newest Unity version and the respective iOS Build Support module. If you need help, you can check [this tutorial](https://learn.unity.com/tutorial/project-configuration-with-unity-hub-1#) from [Unity learn](https://unity.com/learn) platform. [Unity learn](https://unity.com/learn) is a great place to find a lot of useful tutorials.
-2. To be able to install your app later on iPhone you need **Xcode**. Download it from [App Store](https://developer.apple.com/xcode/). Note, this will take quite some time.
-3. Install **Visual Studio** for Mac for editing the C# source code. This isn’t strictly necessary, but makes code editing a lot easier.
-    1. Download Visual Studio from the [Microsoft web pages](https://visualstudio.microsoft.com/vs/mac/).
-    2. Connect it with your Unity Editor:
-        1. [Get started with Visual Studio and Unity](https://docs.microsoft.com/en-us/visualstudio/gamedev/unity/get-started/getting-started-with-visual-studio-tools-for-unity?pivots=macos)
-        2. Optional: [Use Visual Studio Tools for Unity](https://docs.microsoft.com/en-us/visualstudio/gamedev/unity/get-started/using-visual-studio-tools-for-unity?pivots=macos)
+To setup your computer for this project follow the steps from [this page](Docs/EnvironmentSetup.md) or ensure that you have the latest versions of Unity, Xcode and Visual Studio for Mac.
 
-## Create your first Unity project
+## Project Setup - Create your first Unity project
 
 In this tutorial, we will create a mobile application, but if you are new to Unity, you might consider creating a **simple desktop project**. This will help you to get familiar with Unity Editor navigation and functionality. [Get started with Unity - Creator Kit: Beginner Code](https://learn.unity.com/tutorial/get-started-with-creator-kit-beginner-code) and [Create with code](https://learn.unity.com/course/create-with-code) are 2 tutorials, which cover creating basic desktop applications.
 
-There are a few things needed to setup a **project for a mobile application** with Unity. The following instructions will guide you through them (Note: for **Android setup** follow the tutorial on [Unity learn](https://learn.unity.com/tutorial/building-for-mobile)):
+To setup a mobile project follow the steps from [this page](Docs/ProjectSetup.md).
 
-1. In Unity Editor go to *File* → *Build Settings*, select *iOS* from the platform list below and press *Switch Platform*. Wait for the switch to complete and close the *Build Settings* dialog. From now you will be building for your iPhone.
-2. Go to *Edit* → *Project Settings* → *Player* and enter your *Product Name* and C*ompany Name*. These can be really anything, but try to be somewhat unique. Next select *iOS* tab and *Other Settings*: make sure that *Auto Graphics API* is enabled. Set *Bundle Identifier* to *com.your Company Name.your Product Name* or anything else unique.
+## Build your first Unity project
 
-To **build** your mobile project for **iPhone**:
-
-1. Add the current scene to the build: In Unity Editor go to *File* → *Build Settings* and press *Add Open Scene*.
-2. Build an Xcode project: Press *Build*. You will be asked to select location for your build. Choose a folder and press *Save*. Now your Xcode project will be created. Note, this isn't the final build or application yet.
-3. Open the newly created Xcode project with Xcode: For that, open *Finder*, go to your build folder and double click on file with the file extension *.xcodeproj*.
-4. Create a developer account in Xcode (if you don’t have one already): Go to *Xcode* → *Preferences* → *Accounts* and click on the *+* icon. Select *Apple ID* and sign in with your Apple ID. Close the popup. Back in Xcode main view select *Unity-iPhone* from the left bar, it will change the middle part of the view. Switch from *General* to the *Signing & Capabilities* tab and check the *Automatically Manage Signing* checkbox. Click on the *Team* dropdown below and select your team.
-5. Plugin your device to your computer and press the play icon to build.
-6. You might get an error when trying to run the application on your mobile device, a warning about an *Untrusted Enterprise Developer*. To fix this follow these [instructions](https://support.apple.com/en-us/HT204460).
+To build a mobile application follow the steps from [this page](Docs/Build.md).
 
 Now you can build and run your app on a mobile device, but your application is a bit boring. Let’s start changing that.
 
@@ -63,7 +45,7 @@ Now, we will add **plane detection**:
 2. Create a plane prefab: Right click in *Hierarchy* window and select *XR* → *AR Default Plane*. Create a *Prefab* folder in your project: Select *Assets* folder in *Project* window, right click, select *Create* → *Folder* and rename it to *Prefab*. Move the *AR Default Plane* from the *Hierarchy* window to the newly created *Prefab* folder. Delete the *AR Default Plane* in the *Hierarchy* window.
 3. Assign the plane prefab to the plane manager: Select the *AR Session Origin* in *Hierarchy* window, go to the *Inspector* window, open the *Plane Prefab* dropdown in the *AR Plane Manager*, select the *Assets* tab and select the *AR Default Plane* prefab.
 
-Build your application again, in the same way as explained above, and test if you can see the planes around you. You should be able to see planes being detected on the ground, walls, tables etc.
+[Build](Docs/Build.md) your application again, in the same way as explained above, and test if you can see the planes around you. You should be able to see planes being detected on the ground, walls, tables etc.
 
 After making sure that this part is working, remove the *AR Default Plane* prefab from the *AR Plane Manager*: You can do that in the *Inspector* window. Click on the *Plane Prefab* dropdown and select *None*.
 
@@ -80,7 +62,7 @@ Next, let’s **add a marker** to your app. It will mark the spot on which you w
         4. Also remove the *Mesh Collider* component. The plane doesn’t need it. Do delete a component press the 3 dots icon in the upper right corner of the component you wish to remove and select *Remove Component*. 
     4. Now, drag the *PlacementIndicator* material on the *Plane* object in the *Scene* view in the center of the Unity Editor.
 
-At this point you can build your application again and check if you can see the indicator. It will be always at the same position, therefore next, we will add logic, so the indicator can follow your movement and be used it as a **placement indicator**. For this you will need to add some **C# code**.
+At this point you can [build](Docs/Build.md) your application again and check if you can see the indicator. It will be always at the same position, therefore next, we will add logic, so the indicator can follow your movement and be used it as a **placement indicator**. For this you will need to add some **C# code**.
 
 1. Create a new C# script: First create a *Scripts* folder under *Assets* in the *Hierarchy* window. Then right click on the folder, select *Create* → *C# Script* and rename it directly to *PlacementIndicator*.
 2. Attach the C# script to the *PlacementIndicator* game object: To do that, select the *PlacementIndicator* game object in the *Hierarchy* window, go to the *Inspector* window, press *Add Component*, search for the *Placement Indicator* C# script and select it.
@@ -160,7 +142,7 @@ public class PlacementIndicator : MonoBehaviour {
 5. Connect the *Plane* game object to the script: select the *PlacementIndicator* game object in the *Project* window, go to *Inspector* window, open the *Indicator Icon* dropdown and select *Plane*.
 6. Add *AR Raycast Manager* to the *AR Session Origin*: Select *AR Session Origin* in the *Project* window, go to the *Inspector* window, click *Add Component*, search for *AR Raycast Manager* and select it.
 
-Build again and see how your placement indicator behaves now. It should indicate plane places around you and disappear when no plane can be detected. You will notice that when you move around, the indicator is **rotating** in an unexpected way. Let’s **fix** that.
+[Build](Docs/Build.md) again and see how your placement indicator behaves now. It should indicate plane places around you and disappear when no plane can be detected. You will notice that when you move around, the indicator is **rotating** in an unexpected way. Let’s **fix** that.
 
 1. Add logic to the *PlacementIndicator* C# script: double click on the *PlacementIndicator* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the *UpdateGamePlacementPose* method with the following code:
 ``` C#
@@ -193,7 +175,7 @@ void UpdateGamePlacementPose() {
 ```
 2. Don’t forget to save your changes to the C# script file.
 
-Now build again and check how the placement indicator is behaving. It should smoothly rotate with you while you are moving around.
+Now [build](Docs/Build.md) again and check how the placement indicator is behaving. It should smoothly rotate with you while you are moving around.
 
 Next we will add logic to **spawn an object at the location of the indicator** when you touch the screen.
 
@@ -290,7 +272,7 @@ public class PlacementIndicator : MonoBehaviour {
 3. Don’t forget to save your changes to the C# script file.
 4. Connect the CubeObject object with the script: select the *PlacementIndicator* game object in the *Project* window, go to *Inspector* window, open the *Object To Place* dropdown and select *CubeObject*.
 
-Build again and test your changes. Once the placement indicator is visible, touch the screen. Every time you touch the screen the cube will appear at the position of the indicator.
+[Build](Docs/Build.md) again and test your changes. Once the placement indicator is visible, touch the screen. Every time you touch the screen the cube will appear at the position of the indicator.
 
 ### Unity Documentation
 To learn more about the Unity scripting framework and the provided components check the following:
@@ -308,14 +290,14 @@ To import a character from Mixamo to Unity follow the steps below:
 3. Import the character to Unity: Go to *Unity Editor* and create a *Characters* folder under *Assets* in the *Project* window. Drag and drop the downloaded character to the newly created folder. Now drag and drop the character from the *Characters* folder in the *Project* window to the *Hierarchy* window. The character will appear in the *Scene* view. If you zoom in on the character in the *Scene* view, you will notice that the textures are not displayed. Let’s fix that: Select your character in the *Project* window, go to the *Inspector* window, select *Materials*, click on *Extract Textures…* and select the *Textures* folder. While extracting Unity will warn you about normal map and ask you, if it should fix it: press *Fix now*. If you check your character in the *Scene* view again, you will notice that the textures are displayed correctly.
 4. Your character might be a bit dark, the *Directional Light* (the sun) might be pointing in the wrong direction. To change this: Select *Directional Light* in the *Hierarchy* window, go to the *Inspector* window and change the *Y*-value of the *Rotation* to adapt the light direction.
 
-You can build your application again, to double check that you can see the character you just added. Once you start the app on your mobile, the character will be added at Position (0,0,0), so basically at your position. You will have to move and point your mobile towards the position your were standing, to actually see your character.
+You can [build](Docs/Build.md) your application again, to double check that you can see the character you just added. Once you start the app on your mobile, the character will be added at Position (0,0,0), so basically at your position. You will have to move and point your mobile towards the position your were standing, to actually see your character.
 
 The character is standing at an odd place, has an odd pose and is also quite big. In the next steps we will fix all that. Let’s start by replacing the cube and instead **spawn** the **character at** the **indicator position**:
 
 1. Attach the character to the *PlacementIndicator* script: select the *PlacementIndicator* game object in the *Project* window, go to *Inspector* window, open the *Object To Place* dropdown and select your character. You can also delete the *CubeObject* now. We will not need it anymore.
 2. Change the size of the character: Select your character in the *Characters* folder in the *Project* window, go to the *Inspector* window, select *Model*, change the value for *Scale Factor* to 0.4 and press *Apply*.
 
-You can build your application again, to check your changes. Instead of the cube, your character should now appear at the position of the indicator every time you touch the screen.
+You can [build](Docs/Build.md) your application again, to check your changes. Instead of the cube, your character should now appear at the position of the indicator every time you touch the screen.
 
 Next we will **add** an idle **animation to** the **character** to make it stand more natural.
 
@@ -330,7 +312,7 @@ Next we will **add** an idle **animation to** the **character** to make it stand
     5. To repeat this animation endlessly, select the animation in the *Project* window, go to *Inspector* window, enable *Loop Time* and press *Apply*.
     6. Select the animation for your character in the *Characters* folder in the *Project* window, then go to the *Inspector* window, select *Model*, change the value for *Scale Factor* to 0.4 and press *Apply*.
 
-Build your application again and check how your character behaves.
+[Build](Docs/Build.md) your application again and check how your character behaves.
 
 Now, we will add a **second animation**. This time, it will be an animation for walking. We will adapt the *PlacementIndicator* script so, that after the character is visible, the marker will disappear and a touch on the screen will make the character walk.
 
