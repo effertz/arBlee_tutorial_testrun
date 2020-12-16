@@ -320,22 +320,23 @@ Now, we will add a **second animation**. This time, it will be an animation for 
 
 1. Download a walk animation from Mixamo: 
     1. Go back to the [Mixamo](https://www.mixamo.com/) web page. 
-    2. While your character is still selected, select the *Animations* tab, search for *walk*, select one of the walk animations. 
-    3. Before pressing *Download* make sure the animation is *In Place*. There is a *In Place* checkbox under the *Download* button. Set it. 
-    4. Then press *Download*. In the *Download Settings* dialog set:
+    1. While your character is still selected, select the *Animations* tab, search for *walk*, select one of the walk animations. 
+    1. Before pressing *Download* make sure the animation is *In Place*. There is a *In Place* checkbox under the *Download* button. Set it. 
+    1. Then press *Download*. In the *Download Settings* dialog set:
         1. *Format* to *FBX for Unity* and 
         2. *Skin* to *Without Skin*.
-2. Import the walk animation to Unity:
+1. Import the walk animation to Unity:
     1. Drag and drop the downloaded animation to the *Characters* folder in *Project* window in the *Unity Editor*. 
-    2. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
-3. Create a transition between animations: 
+    1. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
+1. Create a transition between animations: 
     1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png" alt="drawing" width="600"/>
-    2. Select one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
-    3. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png" alt="drawing" width="600"/>
-    4. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png" alt="drawing" width="600"/> Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
-4. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
+    1. Select one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
+    1. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png" alt="drawing" width="600"/>
+    1. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png" alt="drawing" width="600"/>
+    1. Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
+1. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
     1. First go to the *Scripts* folder under *Assets* in the *Hierarchy* window. Then right click on the folder, select *Create* → *C# Script* and rename it directly to *Movement*.
-    2. Double click on the *Movement* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the existing code with and save it: 
+    1. Double click on the *Movement* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the existing code with and save it: 
     ``` C#
     using UnityEngine;
 
