@@ -1,5 +1,5 @@
 # Environment Setup
-Install required software to create and build an mobile Unity application for iPhone or Android.
+Install required software to create and build a mobile Unity application for iPhone or Android.
 
 ## Install **Unity**
 1. Create an account on [https://unity.com/](https://unity.com/)
