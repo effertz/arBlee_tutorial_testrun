@@ -3,13 +3,13 @@ This is a collection of tutorials to demonstrate how to create an Augmented Real
 
 This collection of tutorials assumes that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
-This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. The set of software verions used to compile the application can be found [here](Docs/Versions.md).
+This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. The set of software versions used to compile the application can be found [here](Docs/Versions.md).
 
-So let’s start:
+So, let’s start:
 
 ## Environment Setup - Install required software
 
-To setup your computer for this project follow the steps from [this page](Docs/EnvironmentSetup.md) or ensure that you have the latest versions of Unity, Xcode and Visual Studio for Mac.
+To setup your computer for this project follow the steps from [this page](Docs/EnvironmentSetup.md) or ensure that you have the latest versions of Unity, Xcode and Visual Studio for Mac (or equivalent for Android or Windows).
 
 ## Project Setup - Create your first Unity project
 
@@ -45,7 +45,9 @@ Now, we will add **plane detection**:
 2. Create a plane prefab: Right click in *Hierarchy* window and select *XR* → *AR Default Plane*. Create a *Prefab* folder in your project: Select *Assets* folder in *Project* window, right click, select *Create* → *Folder* and rename it to *Prefab*. Move the *AR Default Plane* from the *Hierarchy* window to the newly created *Prefab* folder. Delete the *AR Default Plane* in the *Hierarchy* window.
 3. Assign the plane prefab to the plane manager: Select the *AR Session Origin* in *Hierarchy* window, go to the *Inspector* window, open the *Plane Prefab* dropdown in the *AR Plane Manager*, select the *Assets* tab and select the *AR Default Plane* prefab.
 
-[Build](Docs/Build.md) your application again, in the same way as explained above, and test if you can see the planes around you. You should be able to see planes being detected on the ground, walls, tables etc.
+[Build](Docs/Build.md) your application again and test if you can see the planes around you. You should be able to see planes being detected on the ground, walls, tables etc.
+
+ADD PIC
 
 After making sure that this part is working, remove the *AR Default Plane* prefab from the *AR Plane Manager*: You can do that in the *Inspector* window. Click on the *Plane Prefab* dropdown and select *None*.
 
@@ -327,10 +329,10 @@ Now, we will add a **second animation**. This time, it will be an animation for 
     1. Drag and drop the downloaded animation to the *Characters* folder in *Project* window in the *Unity Editor*. 
     2. Next, double click on the *CharacterAnimationController* in the *Project* window to open the *Animator* window. Right click on the squared *Base Layer* area, create a new state, using the *Empty* state. Rename this state to *Walk*. Open the dropdown for the *Motion* field in the *Inspector* window and select the downloaded walk animation.
 3. Create a transition between animations: 
-    1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: ![Transition Between Idle And Walk](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png)
+    1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png" alt="drawing" width="600"/>
     2. Select one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
-    3. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. ![Transition Between Idle And Walk - Bool](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png)
-    4. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: ![Transition Between Idle And Walk - Bool2](Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png) Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
+    3. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool" alt="drawing" width="600"/>
+    4. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2" alt="drawing" width="600"/> Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
 4. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
     1. First go to the *Scripts* folder under *Assets* in the *Hierarchy* window. Then right click on the folder, select *Create* → *C# Script* and rename it directly to *Movement*.
     2. Double click on the *Movement* script in the *Hierarchy* window to open it in *Visual Studio*. Replace the existing code with and save it: 
