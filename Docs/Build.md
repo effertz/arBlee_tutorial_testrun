@@ -4,7 +4,7 @@
 
 ### In Unity
 
-1. Add the current scene to the build: In Unity Editor go to *File* → *Build Settings* and press *Add Open Scene*. <img src="Screenshots/BuildSettings.png" alt="drawing" width="1400"/>
+1. Add the current scene to the build: In Unity Editor go to *File* → *Build Settings* and press *Add Open Scene*. <img src="Screenshots/BuildSettings.png" alt="BuildSettings" width="1000"/>
 1. Build an Xcode project: Press *Build*. You will be asked to select location for your build. Choose a folder and press *Save*. Now your Xcode project will be created. Note, this isn't the final build or application yet.
 
 ### In Xcode
