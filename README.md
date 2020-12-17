@@ -1,7 +1,7 @@
 # How to create an AR mobile application with Unity
 This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. 
 
-<img src="Screenshots/Character-Examples.png" alt="drawing" width="600"/>
+<img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
 This collection of tutorials assumes that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
