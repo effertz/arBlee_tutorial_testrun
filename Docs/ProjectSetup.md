@@ -9,9 +9,9 @@ There are a few things needed to setup a **project for a mobile application** wi
 ## iOS specific
 
 ### In Unity
-1. In Unity Editor go to *File* → *Build Settings*, select *iOS* from the platform list below and press *Switch Platform*. Wait for the switch to complete and close the *Build Settings* dialog. From now you will be building for your iPhone. ![BuildSettings](Screenshots/ProjectSetup-BuildSettings.png)
-1. Go to *Edit* → *Project Settings* → *Player* and enter your *Product Name* and C*ompany Name*. These can be really anything, but try to be somewhat unique. Next select *iOS* tab and *Other Settings*: make sure that *Auto Graphics API* is enabled. Set *Bundle Identifier* to *com.your Company Name.your Product Name* or anything else unique. ![ProjectSettings](Screenshots/ProjectSettings.png)
-1. Build your project in Unity. For instructions check the first part (Unity part) of [this page](ProjectSetup.md) and come back here to finish the project setup in Xcode.
+1. In Unity Editor go to *File* → *Build Settings*, select *iOS* from the platform list below and press *Switch Platform*. Wait for the switch to complete and close the *Build Settings* dialog. From now you will be building for your iPhone. 
+1. Go to *Edit* → *Project Settings* → *Player* and enter your *Product Name* and C*ompany Name*. These can be really anything, but try to be somewhat unique. Next select *iOS* tab and *Other Settings*: make sure that *Auto Graphics API* is enabled. Set *Bundle Identifier* to *com.your Company Name.your Product Name* or anything else unique. <img src="Screenshots/BuildSettings-SwitchPlatform.png" alt="drawing" width="600"/>
+1. Build your project in Unity. For instructions check the first part (Unity part) of [this page](Build.md) and come back here to finish the project setup in Xcode.
 
 ### In Xcode
 1. Open your Xcode project with Xcode: For that, open *Finder*, go to your build folder and double click on file with the file extension *.xcodeproj*.

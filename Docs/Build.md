@@ -4,7 +4,7 @@
 
 1. Build an Xcode project: In Unity Editor go to *File* → *Build Settings* and press *Build*. You will be asked to select location for your build. Choose a folder and press *Save*.
 
-<img src="Screenshots/BuildSettings-Build.png" alt="drawing" width="600"/>
+   <img src="Screenshots/BuildSettings-Build.png" alt="drawing" width="600"/>
 
 ## **iOS** specific
 
