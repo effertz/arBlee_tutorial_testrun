@@ -1,9 +1,9 @@
 # How to create an AR mobile application with Unity
-This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. 
+This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. Which character it will be, is up to you. You will pick one from the [Mixamo](https://www.mixamo.com/) platform. Here are a few examples:
 
 <img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
-This collection of tutorials assumes that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
+I assume that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
 This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. The set of software versions used to compile the application can be found [here](Docs/Versions.md).
 
