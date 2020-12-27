@@ -333,7 +333,7 @@ Now, we will add a **second animation**. This time, it will be an animation for 
 1. Create a transition between animations: 
     1. Go to the *Animator* window, right click on the *Idle* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition (visible as an arrow) to the *Walk* animation in the squared *Base Layer* area. Now create another transition in the opposite direction, right click on the *Walk* animation in the squared *Base Layer* area, select *Make Transition* and connect the transition to the *Idle* animation in the squared *Base Layer* area. You should end up with a animation diagram similar to this: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk.png" alt="drawing" width="600"/>
     1. Select one of the newly created transitions and disable the *Has Exit Time* option in the *Inspector* window. Do this for both transitions.
-    1. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disble the *Walk* animation. <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png" alt="drawing" width="600"/>
+    1. In the *Animator* window, on the left are 2 tabs: *Layers* and *Parameters*. Select the *Parameters* tab, click on the *+* icon next to the text box and select *Bool*. Rename it to *IsWalking*. This is an boolean Animator parameter which we will use to enable and disable the *Walk* animation. <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool.png" alt="drawing" width="600"/>
     1. Select the transition from *Idle* to *Walk* in the in the squared *Base Layer* area, go to the Inspector window, scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*: <img src="Docs/Screenshots/Animation.Diagram.TransitionBetweenIdleAndWalk-Bool2.png" alt="drawing" width="600"/>
     1. Now, do the same for the transition between *Walk* and *Idle*, but set the condition to *false*.
 1. Create a new C# script to control the switch between the *Idle* and *Walk* animation.
@@ -385,7 +385,7 @@ Now, we will add a **second animation**. This time, it will be an animation for 
 
 Try your application again. You will notice that your character is walking, but walking in place. No wonder, this is how we downloaded it. As a next step, we will adapt the *Movement* script to **make the character move when the *Walk* animation** is running.
 
-1. One way to controll the character movement is by using the *CharacterController* component. Therefore add *CharacterController* component to your character in the *hierarchy* window.
+1. One way to control the character movement is by using the *CharacterController* component. Therefore add *CharacterController* component to your character in the *hierarchy* window.
 2. Now update the *Movement* script to use the *CharacterController* to make move your character forward:
 ```C#
 using UnityEngine;
@@ -427,7 +427,23 @@ public class Movement : MonoBehaviour {
 
 [![Movement Forward Video](http://img.youtube.com/vi/eL_8jF1a4lk/0.jpg)](http://www.youtube.com/watch?v=eL_8jF1a4lk)
 
+## Add UI elements to your Mobile App
+It will get difficult to control your app with only one tap gesture. There several ways to fix that. One way is to add UI elements like button or slider to your app. In this section we will add a slider to control from which direction the light (sun) is shinning on your character.
+
+1. Create a [*Canvas*](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html) component for the UI components: go to the *Hierarchy* window, right click on it and select *UI* -> *Canvas*.
+1. Create a [*Slider*](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIInteractionComponents.html#slider) component: 
+    1. go to the *Hierarchy* window, select the *Canvas* component, right click on it and select *UI* -> *Slider*.
+    1. Double click on the *Canvas* component to display and center it in the *Scene view*. Then select the *Slider* component to the desired position. To better understand, where the *Slider* will appear on your mobile phone, change the layout of the Unity Editor and place the [*Game view*](https://docs.unity3d.com/2020.2/Documentation/Manual/GameView.html) next to the *Scene view*. The *Game view* can be adapted to display your preferred *Aspect*. 
+    1. To improve the usability of the *Slider*, set the *Y*-Value of the *Scale* in the *Inspector* window to: a higher value. Try for example 4. 
+1. Disable the *Movement* script for now: go to the *Hierarchy* window, select your character, go to the Inspector window, scroll down to the Movement script and click the checkbox left from the script's name to disable the script.
+1. Create a new script to change the light direction: go to the *Hierarchy* window, select the *Directional Light* component, go to the *Inspector* window, scroll down, press *Add Component*, enter *LightController*, select *New Script* and press *Create and Add*.
+1. Connect the new *LightController* script to the *Slider*: go to the *Hierarchy* window, select the *Slider* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Single)* section, press the *+* icon. At the moment no object is selected, this is indicated with *None (Object)*. Open the dropdown to select an object, switch to *Scene* tab and select the *Directional Light* component. Then select a function to be called: open the dropdown and select *LightController* and *SetShadowDirection*. <img src="Docs/Screenshots/UI.LightController.png" alt="drawing" width="600"/>
+
+Build your app again and test your changes. Right now your character cannot walk.
+
+
+  
+
 ## Upcoming tutorials
-- Mobile UI elements
 - Sound
-- Speech recongnition
+- Speech recognition
