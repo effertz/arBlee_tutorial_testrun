@@ -6,6 +6,10 @@ public class Movement : MonoBehaviour {
     Animator _animator;
     CharacterController _controller;
 
+    public void SetWalking(bool isWalking) {
+        if (_animator != null) _animator.SetBool("IsWalking", isWalking);
+    }
+
     void Start() {
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
@@ -15,10 +19,6 @@ public class Movement : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-            _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
-        }
-
         if (_animator.GetBool("IsWalking")) MoveForward();
     }
 
