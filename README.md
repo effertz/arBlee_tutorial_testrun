@@ -439,7 +439,9 @@ It will get difficult to control your app with only one tap gesture. There sever
 1. Create a new script to change the light direction: go to the *Hierarchy* window, select the *Directional Light* component, go to the *Inspector* window, scroll down, press *Add Component*, enter *LightController*, select *New Script* and press *Create and Add*.
 1. Connect the new *LightController* script to the *Slider*: go to the *Hierarchy* window, select the *Slider* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Single)* section, press the *+* icon. At the moment no object is selected, this is indicated with *None (Object)*. Open the dropdown to select an object, switch to *Scene* tab and select the *Directional Light* component. Then select a function to be called: open the dropdown and select *LightController* and *SetShadowDirection*. <img src="Docs/Screenshots/UI.LightController.png" alt="drawing" width="600"/>
 
-Build your app again and test your changes. Right now your character cannot walk. To enable walking again, we will **add another UI element**: a **Toggle**.
+Build your app again and test your changes. 
+
+Right now your character cannot walk. To enable walking again, we will **add another UI element**: a **Toggle**.
 1. Create a [*Toggle*](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIInteractionComponents.html#toggle) component: Go to the *Hierarchy* window, select the *Canvas* component, right click on it and select *UI* -> *Toggle*. Position the Toggle in your Canvas in similar way as you positioned the *Slider* component. 
 1. Enable the *Movement* script again and edit it:
     1. Remove the following *if-statement* from the *Update* method:
@@ -447,19 +449,63 @@ Build your app again and test your changes. Right now your character cannot walk
     if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
         _animator.SetBool("IsWalking", !_animator.GetBool("IsWalking"));
     }
-    ```
-    1. Add a new method:
+    ```  
+    2. and add a new method:
     ```C#
     public void SetWalking(bool isWalking) {
         if (_animator != null) _animator.SetBool("IsWalking", isWalking);
     }
     ```
-1. Connect the new *SetWalking* method from the *Movement* script to the *Toggle*: go to the *Hierarchy* window, select the *Toggle* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Boolean)* section, press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Movement* and *SetWalking*. <img src="Docs/Screenshots/UI.WalkToggle.png" alt="drawing" width="600"/>
+1. Connect the new *SetWalking* method from the *Movement* script to the *Toggle*: Go to the *Hierarchy* window, select the *Toggle* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Boolean)* section, press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Movement* and *SetWalking*. 
+   <img src="Docs/Screenshots/UI.WalkToggle.png" alt="drawing" width="600"/>
 
 Build your app again and test your changes. 
 
-Next: Disable UI controlls when character not visible
-  
+Both UI elements, Slider and Toggle, are visible on the screen although the character is not placed yet. But this elements are only used for controlling the character. They should only appear when the character is visible. We will add a **UI Manager**, which will handle the **visibility of the UI elements**.
+
+1. Create a *UIManager* game object: Go to the *Hierarchy* window, right click on the *Canvas* component and press *Create Empty* to create an empty game object. Rename the new object to *UIManager*.
+1. Add a script to the *UIManager*: Select the *UIManager* in the *Hierarchy* window and go to the *Inspector* window. Press *Add Component*, write *UIManager*, select *New Script* and *Create and Add*. Double click on the newly created script in the *Project* window to open it in the *Visual Studio*. Replace the exist code with:
+```C#
+using UnityEngine;
+
+public class UIManager : MonoBehaviour {
+    [SerializeField]
+    GameObject slider;
+    [SerializeField]
+    GameObject toggle;
+
+    public void SetSliderActive(bool value) {
+        slider.SetActive(value);
+    }
+
+    public void SetToggleActive(bool value) {
+        toggle.SetActive(value);
+    }
+}
+``` 
+3. Connect the UI elements with the *UIManager*: Go to the *Hierarchy* window, select the *UIManager*, go to the *Inspector* window. In the *UI Manager (Script)* section are 2 fields: *Slider* and *Toggle*. Set both to the respective game objects. <img src="Docs/Screenshots/UI.UIManager.png" alt="drawing" width="600"/>
+4. Create a new script to control the visibilty of the UI elements via the *UIManager*: Select your character in the *Hierarchy* window and go to the *Inspector* window. Press *Add Component*, write *VisibilityController*, select *New Script* and *Create and Add*. Double click on the newly created script in the *Project* window to open it in the *Visual Studio*. Replace the exist code with:
+```C#
+using UnityEngine;
+
+public class VisibilityController : MonoBehaviour {
+    [SerializeField]
+    UIManager uiManager;
+
+    private void OnEnable() {
+        uiManager.SetSliderActive(true);
+        uiManager.SetToggleActive(true);
+    }
+
+    private void OnDisable() {
+        uiManager.SetSliderActive(false);
+        uiManager.SetToggleActive(false);
+    }
+}
+```
+5. Connect the *UIManager* with the newly create *VisibilityController* script: Go to the *Hierarchy* window, select your character, go to the *Inspector* window. In the * Visibility Controller (Script)* section is a field for the *UI Manager*. Select the *UIManager* via the dropdown. <img src="Docs/Screenshots/UI.VisibilityController.png" alt="drawing" width="600"/>
+
+Build your app again and test your changes.
 
 ## Upcoming tutorials
 - Sound
