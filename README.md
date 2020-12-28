@@ -454,7 +454,7 @@ Build your app again and test your changes. Right now your character cannot walk
         if (_animator != null) _animator.SetBool("IsWalking", isWalking);
     }
     ```
-1. Connect the new *SetWalking* method from the * Movement* script to the *Toggle*: go to the *Hierarchy* window, select the * Toggle* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Boolean)* section, press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select * Movement* and * SetWalking*. <img src="Docs/Screenshots/UI.WalkToggle.png" alt="drawing" width="600"/>
+1. Connect the new *SetWalking* method from the *Movement* script to the *Toggle*: go to the *Hierarchy* window, select the *Toggle* component, go to the *Inspector* widow, scroll down to the *On Value Changed (Boolean)* section, press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Movement* and *SetWalking*. <img src="Docs/Screenshots/UI.WalkToggle.png" alt="drawing" width="600"/>
 
 Build your app again and test your changes. 
 
