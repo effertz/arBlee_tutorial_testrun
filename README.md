@@ -3,6 +3,17 @@ This is a collection of tutorials to demonstrate how to create an Augmented Real
 
 <img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
+In seperate sections the following content will be introduced:
+* [Environment Setup - Install required software](#environment-setup---install-required-software)
+* [Project Setup - Create your first Unity project](#project-setup---create-your-first-unity-project)
+* [Build your first Unity project](#build-your-first-unity-project)
+* [Get to know XR and setup your project for it](#get-to-know-xr-and-setup-your-project-for-it)
+  + [Unity Documentation](#unity-documentation)
+* [Create your character with Mixamo](#create-your-character-with-mixamo)
+* [Add UI elements to your Mobile App](#add-ui-elements-to-your-mobile-app)
+* [Add sound to your app](#add-sound-to-your-app)
+* [Upcoming tutorials](#upcoming-tutorials)
+
 I assume that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
 This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. The set of software versions used to compile the application can be found [here](Docs/Versions.md).
