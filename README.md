@@ -507,7 +507,40 @@ public class VisibilityController : MonoBehaviour {
 
 Build your app again and test your changes.
 
+## Add sound to your app
+In this section we will **add sound** to your application. We will add another animation to your character, a greeting animation, and make the character say *Hello*. For that we will add another UI element, a Button. Everytime the button is pressed the **character will switch to the greeting animation and say Hello**.
+
+Let's start:
+
+1. Get an *Audio file*: You can create one yourself, for example with the sound recorder from your phone, or use any other existing sound file you wish. Since, we are going to use it together with the *Greeting* animation, choose a sound which will fit in this context. Here is a list of [Audio file formats Unity supports](https://docs.unity3d.com/2020.2/Documentation/Manual/AudioFiles.html).
+1. Create an *Audio* folder in the *Project* window and add the *Audio file* to it. 
+1. Add an *Audio Source* component to your character. 
+1. Connect the *Audio Source* component with the *Audio file*: Go to the *Hierarchy* window, select your character, go to the *Inspector* window. Scroll down to the *Audio Source* component. Open the *AudioClip* dropdown and select your *Audio file*.
+1. Disable *Play on Awake* option in the *Audio Source* component.
+1. Create a new script *AudioController* and add it to your character.
+1. Open the new script in *Visual Studio* and replace the exist code with:
+```C#
+using UnityEngine;
+
+public class AudioController : MonoBehaviour {
+    AudioSource helloAudioSource;
+
+    void Start() {
+        helloAudioSource = GetComponent<AudioSource>();
+        if (helloAudioSource == null) Debug.LogError("helloAudioSource is NULL");
+    }
+
+    public void SayHello() {
+        if (!helloAudioSource.isPlaying) helloAudioSource.Play();
+    }
+}
+```
+8. Save the script.
+1. Add a *Button - TextMeshPro* to the *Canvas* in the *Hierarchy* window, position the *Button* in the *Scene* view and change the *Label* text to *Hello*. A *TMP Importer* dialog will popup. Import the *TMP Essentials* and close the dialog. <img src="Docs/Screenshots/UI.TmpImporter.png" alt="drawing" width="600"/>
+1. Connect the *Button* to the *AudioController* script: Select the *Button* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *OnClick* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *AudioController* and *SayHello*. <img src="Docs/Screenshots/Sound.AudioController.png" alt="drawing" width="600"/>
+
+Build your app again and test your changes. Now everytime you press the *Hello* Button, your character will say *Hello* to you. But the animation doesn't match. We will **add a new Greeting animation** and connect the sound to it.
+
 ## Upcoming tutorials
-- Sound
 - Speech recognition
 - Gesture recognition
