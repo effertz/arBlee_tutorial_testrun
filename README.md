@@ -503,7 +503,7 @@ public class VisibilityController : MonoBehaviour {
     }
 }
 ```
-5. Connect the *UIManager* with the newly create *VisibilityController* script: Go to the *Hierarchy* window, select your character, go to the *Inspector* window. In the * Visibility Controller (Script)* section is a field for the *UI Manager*. Select the *UIManager* via the dropdown. <img src="Docs/Screenshots/UI.VisibilityController.png" alt="drawing" width="600"/>
+5. Connect the *UIManager* with the newly create *VisibilityController* script: Go to the *Hierarchy* window, select your character, go to the *Inspector* window. In the *Visibility Controller (Script)* section is a field for the *UI Manager*. Select the *UIManager* via the dropdown. <img src="Docs/Screenshots/UI.VisibilityController.png" alt="drawing" width="600"/>
 
 Build your app again and test your changes.
 
