@@ -10,8 +10,8 @@ In seperate sections the following content will be introduced:
 * [Get to know XR and setup your project for it](#get-to-know-xr-and-setup-your-project-for-it)
   + [Unity Documentation](#unity-documentation)
 * [Create your character with Mixamo](#create-your-character-with-mixamo)
-* [Add UI elements to your Mobile App](#add-ui-elements-to-your-mobile-app)
-* [Add sound to your app](#add-sound-to-your-app)
+* [Add UI elements to your app](#add-ui-elements-to-your-app)
+* [Add Sound to your app](#add-sound-to-your-app)
 * [Upcoming tutorials](#upcoming-tutorials)
 
 I assume that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
@@ -438,7 +438,7 @@ public class Movement : MonoBehaviour {
 
 [![Movement Forward Video](http://img.youtube.com/vi/eL_8jF1a4lk/0.jpg)](http://www.youtube.com/watch?v=eL_8jF1a4lk)
 
-## Add UI elements to your Mobile App
+## Add UI elements to your app
 It will get difficult to control your app with only one tap gesture. There several ways to fix that. One way is to **add UI elements** like Buttons or Slider to your app. In this section we will **add a Slider** to control from which direction the light (sun) is shinning on your character.
 
 1. Create a [*Canvas*](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html) component for the UI components: To be able to add UI elements to your application, first you need to create a *Canvas* component which will contain all your UI elements. Go to the *Hierarchy* window, right click on it and select *UI* -> *Canvas*.
@@ -518,7 +518,7 @@ public class VisibilityController : MonoBehaviour {
 
 Build your app again and test your changes.
 
-## Add sound to your app
+## Add Sound to your app
 In this section we will **add sound** to your application. We will add another animation to your character, a greeting animation, and make the character say *Hello*. For that we will add another UI element, a Button. Everytime the button is pressed the **character will switch to the greeting animation and say Hello**.
 
 Let's start:
