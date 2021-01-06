@@ -3,16 +3,21 @@ This is a collection of tutorials to demonstrate how to create an Augmented Real
 
 <img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
-In seperate sections the following content will be introduced:
-* [Environment Setup - Install required software](#environment-setup---install-required-software)
-* [Project Setup - Create your first Unity project](#project-setup---create-your-first-unity-project)
-* [Build your first Unity project](#build-your-first-unity-project)
-* [Get to know XR and setup your project for it](#get-to-know-xr-and-setup-your-project-for-it)
-  + [Unity Documentation](#unity-documentation)
-* [Create your character with Mixamo](#create-your-character-with-mixamo)
-* [Add UI elements to your app](#add-ui-elements-to-your-app)
-* [Add Sound to your app](#add-sound-to-your-app)
-* [Upcoming tutorials](#upcoming-tutorials)
+<details>
+  <summary>Table of Contents</summary>
+
+  * [Environment Setup - Install required software](#environment-setup---install-required-software)
+  * [Project Setup - Create your first Unity project](#project-setup---create-your-first-unity-project)
+  * [Build your first Unity project](#build-your-first-unity-project)
+  * [Get to know XR and setup your project for it](#get-to-know-xr-and-setup-your-project-for-it)
+    + [Unity Documentation](#unity-documentation)
+  * [Create your character with Mixamo](#create-your-character-with-mixamo)
+  * [Add UI elements to your app](#add-ui-elements-to-your-app)
+  * [Add Sound to your app](#add-sound-to-your-app)
+  * [Speech Recognition](#speech-recognition)
+  * [Upcoming tutorials](#upcoming-tutorials)
+
+</details>
 
 I assume that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
@@ -564,6 +569,11 @@ Build your app again and test your changes. Now everytime you press the *Hello* 
 1. Call the *Trigger* from the *Button* *onClick* section: Select the *Button* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *OnClick* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Animator* and *SetTrigger (string)*. In the text field enter *Greet*. <img src="Docs/Screenshots/UI.Button.GreetAnimation.png" alt="drawing" width="600"/>
 
 Build your app again and test your changes.
+
+## Speech Recognition
+We will be using Watson Unity SDK to implement the Speech Recognition for our app. 
+- [watson-developer-cloud/unity-sdk](https://github.com/watson-developer-cloud/unity-sdk) on GitHub
+- [Watson Unity SDK: Speech to Text example](https://www.youtube.com/watch?v=woKMumx3TcY) on YouTube
 
 ## Upcoming tutorials
 - Speech recognition
