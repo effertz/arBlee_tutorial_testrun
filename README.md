@@ -571,9 +571,85 @@ Build your app again and test your changes. Now everytime you press the *Hello* 
 Build your app again and test your changes.
 
 ## Speech Recognition
-We will be using Watson Unity SDK to implement the Speech Recognition for our app. 
-- [watson-developer-cloud/unity-sdk](https://github.com/watson-developer-cloud/unity-sdk) on GitHub
-- [Watson Unity SDK: Speech to Text example](https://www.youtube.com/watch?v=woKMumx3TcY) on YouTube
+We will be using [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android) to implement the Speech Recognition for our app.
+1. Download this [zip file](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/archive/master.zip) from the *PingAK9/Speech-And-Text-Unity-iOS-Android repository* on GitHub and unzip it.
+1. Create a new *PingAK9* folder in *Assets* folder in the *Project* window.
+1. Copy the following from the downloaded files to the new PingAK9 folder:
+    - Editor folder (keep the folder and the folder name)
+        - BuildPostProcessor.cs
+    - iOS folder
+        - SpeechRecorderViewCotroller.h
+        - SpeechRecorderViewCotroller.mm
+        - SpeechUtteranceViewCotroller.h
+        - SpeechUtteranceViewCotroller.mm
+    - SpeechToText.cs
+    - SpeechToText.prefab
+1. Create UI elements to control the speech recongnition:
+    - create a *Toggle* in your Canvas Game Object. Rename it to *ToggleSpeech* and change the text to *Speech*.
+    - create a *Text* in your Canvas Game Object. Change the text to ... .
+1. Add a new C# script to your character in the *Hierarchy* window. Call it *VoiceController*.
+1. Open the script with *Visual Studio* and replace the source code with:
+
+```C#
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TextSpeech;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class VoiceController : MonoBehaviour {
+
+    const string LANG_CODE = "en-US";
+    [SerializeField]
+    Text uiText;
+
+    void Start() {
+        Setup(LANG_CODE);
+        SpeechToText.instance.onResultCallback = OnFinalSpeechResult;
+    }
+
+    public void SetSpeechToTextActive(bool active) {
+        if (active) StartListening();
+        else StopListening();
+    }
+
+    void StartListening() {
+        SpeechToText.instance.StartRecording();
+    }
+
+    void StopListening() {
+        SpeechToText.instance.StopRecording();
+    }
+
+    void OnFinalSpeechResult(string result) {
+        uiText.text = result;
+        Debug.Log("OnFinalSpeechResult result: " + result);
+    }
+
+    void Setup(string languageCode) {
+        SpeechToText.instance.Setting(languageCode);
+    }
+}
+```
+8. Connect the *Ui Text* field from the *VoiceController* script with the Text UI element.
+    <img src="Docs/Screenshots/UI.VoiceController.Text.png" alt="drawing" width="600"/>
+
+9. Connect the *ToggleSpeech* UI element with the *SetSpeechToTextActive* method from the *VoiceController* script from your character.
+    <img src="Docs/Screenshots/UI.ToggleSpeech.SetSpeechToTextActive.png" alt="drawing" width="600"/>
+
+Build your application and test it.
+
+If you encounter this link error while building with Xcode:
+```
+Undefined symbols for architecture arm64: 
+"_OBJC_CLASS_$_SFSpeechAudioBufferRecognitionRequest", referenced from: objc-class-ref in SpeechRecorderViewController.o 
+"_OBJC_CLASS_$_SFSpeechRecognizer", referenced from: objc-class-ref in SpeechRecorderViewController.o 
+ld: symbol(s) not found for architecture arm64 clang: 
+error: linker command failed with exit code 1 (use -v to see invocation)
+```
+follow [these instructions](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/issues/30#issuecomment-702119460) to fix the issue.
+ 
 
 ## Upcoming tutorials
 - Speech recognition
