@@ -566,13 +566,16 @@ Build your app again and test your changes. Now everytime you press the *Hello* 
 1. Setup transitions: Select the transition from *Idle* to *Greet* in the in the squared *Base Layer* area, go to the Inspector window, 
     - Disable the *Has Exit Time* option.
     - scroll down to the *Conditions* section and select the + icon. It should automatically add the *IsWalking* parameter with value *true* to the *Conditions*. Change the *IsWalking* parameter to *Greet*.
-1. Call the *Trigger* from the *Button* *onClick* section: Select the *Button* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *OnClick* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Animator* and *SetTrigger (string)*. In the text field enter *Greet*. <img src="Docs/Screenshots/UI.Button.GreetAnimation.png" alt="drawing" width="600"/>
+1. Call the *Trigger* from the *Button* *onClick* section: Select the *Button* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *On Click ()* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *Animator* and *SetTrigger (string)*. In the text field enter *Greet*. <img src="Docs/Screenshots/UI.Button.GreetAnimation.png" alt="drawing" width="600"/>
 
 Build your app again and test your changes.
 
 ## Speech Recognition
-We will be using [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android) to implement the Speech Recognition for our app.
-1. Download this [zip file](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/archive/master.zip) from the *PingAK9/Speech-And-Text-Unity-iOS-Android repository* on GitHub and unzip it.
+It would be nice if we could better interact with the character, for example talk. We could make say Hello when somebody says Hello to it. To be able to do it we need Speech Recognition. There are different way to implement Speech Recognition with Unity. I decided to use [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android). It is working with iOS and also with the newest Unity releases. It also uses the iOS internal Speech Recognition Engine. These are all big pluses in my eyes.
+
+Let's start:
+
+1. Download this [zip file](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/archive/master.zip) from the *[PingAK9/Speech-And-Text-Unity-iOS-Android](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android)* repository on GitHub and unzip it.
 1. Create a new *PingAK9* folder in *Assets* folder in the *Project* window.
 1. Copy the following from the downloaded files to the new PingAK9 folder:
     - Editor folder (keep the folder and the folder name)
@@ -584,6 +587,7 @@ We will be using [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Uni
         - SpeechUtteranceViewCotroller.mm
     - SpeechToText.cs
     - SpeechToText.prefab
+1. Add the *SpeechToText.prefab* to the scene in your *Hierarchy* window.
 1. Create UI elements to control the speech recongnition:
     - create a *Toggle* in your Canvas Game Object. Rename it to *ToggleSpeech* and change the text to *Speech*.
     - create a *Text* in your Canvas Game Object. Change the text to ... .
@@ -591,9 +595,6 @@ We will be using [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Uni
 1. Open the script with *Visual Studio* and replace the source code with:
 
 ```C#
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TextSpeech;
 using UnityEngine;
 using UnityEngine.UI;
@@ -632,15 +633,14 @@ public class VoiceController : MonoBehaviour {
     }
 }
 ```
-8. Connect the *Ui Text* field from the *VoiceController* script with the Text UI element.
+9. Connect the *Ui Text* field from the *VoiceController* script with the Text UI element: Select the your character in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *VoiceController* section, open the dropdown and select the *Text* Game Object from the *Scene* tab. 
     <img src="Docs/Screenshots/UI.VoiceController.Text.png" alt="drawing" width="600"/>
-
-9. Connect the *ToggleSpeech* UI element with the *SetSpeechToTextActive* method from the *VoiceController* script from your character.
+10. Connect the *ToggleSpeech* UI element with the *SetSpeechToTextActive* method from the *VoiceController* script from your character: Select the *ToggleSpeech* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *On Value Changed (Boolean)* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *VoiceController* and *SetSpeechToTextActive*.
     <img src="Docs/Screenshots/UI.ToggleSpeech.SetSpeechToTextActive.png" alt="drawing" width="600"/>
 
 Build your application and test it.
 
-If you encounter this link error while building with Xcode:
+If you encounter the following link error while building with Xcode:
 ```
 Undefined symbols for architecture arm64: 
 "_OBJC_CLASS_$_SFSpeechAudioBufferRecognitionRequest", referenced from: objc-class-ref in SpeechRecorderViewController.o 
@@ -649,8 +649,10 @@ ld: symbol(s) not found for architecture arm64 clang:
 error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 follow [these instructions](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/issues/30#issuecomment-702119460) to fix the issue.
+
+Next, we will **change the speech recognition behavior** to **return text for partiall recordings** and not only when the recording is completed.
+
  
 
 ## Upcoming tutorials
-- Speech recognition
 - Gesture recognition
