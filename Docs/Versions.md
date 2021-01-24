@@ -1,6 +1,6 @@
 # Versions
 
-* Unity: 2020.2.1f1
+* Unity: 2020.2.2f1
 
 ### Software used to build for iOS
 
@@ -11,8 +11,3 @@
 ### Software used to build for Android
 
 to be added ...
-
-### Speech Recognition
-
-* Watson Unity SDK: 5.0.1
-* IBM Unity SDK Core: 1.2.1
