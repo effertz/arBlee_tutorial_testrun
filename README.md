@@ -633,9 +633,9 @@ public class VoiceController : MonoBehaviour {
     }
 }
 ```
-9. Connect the *Ui Text* field from the *VoiceController* script with the Text UI element: Select the your character in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *VoiceController* section, open the dropdown and select the *Text* Game Object from the *Scene* tab. 
+8. Connect the *Ui Text* field from the *VoiceController* script with the Text UI element: Select the your character in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *VoiceController* section, open the dropdown and select the *Text* Game Object from the *Scene* tab. 
     <img src="Docs/Screenshots/UI.VoiceController.Text.png" alt="drawing" width="600"/>
-10. Connect the *ToggleSpeech* UI element with the *SetSpeechToTextActive* method from the *VoiceController* script from your character: Select the *ToggleSpeech* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *On Value Changed (Boolean)* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *VoiceController* and *SetSpeechToTextActive*.
+9. Connect the *ToggleSpeech* UI element with the *SetSpeechToTextActive* method from the *VoiceController* script from your character: Select the *ToggleSpeech* in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *On Value Changed (Boolean)* section and press the *+* icon. Open the dropdown to select an object, switch to *Scene* tab and select your character. Then select a function to be called: open the dropdown and select *VoiceController* and *SetSpeechToTextActive*.
     <img src="Docs/Screenshots/UI.ToggleSpeech.SetSpeechToTextActive.png" alt="drawing" width="600"/>
 
 Build your application and test it.
