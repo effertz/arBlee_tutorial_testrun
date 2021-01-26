@@ -94,6 +94,8 @@
                 NSLog(@"STARTRECORDING RESULT: %@", transcriptText);
                 if (result.isFinal) {
                     UnitySendMessage("SpeechToText", "onResults", [transcriptText UTF8String]);
+                } else {
+                	UnitySendMessage("SpeechToText", "onPartialResults", [transcriptText UTF8String]);
                 }
             }
             else {

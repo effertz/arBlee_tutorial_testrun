@@ -651,8 +651,64 @@ error: linker command failed with exit code 1 (use -v to see invocation)
 follow [these instructions](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android/issues/30#issuecomment-702119460) to fix the issue.
 
 Next, we will **change the speech recognition behavior** to **return text for partiall recordings** and not only when the recording is completed.
+1. Update *SpeechRecorderViewController.mm* file. Add the following *else* statement to the *startRecording* method after the `if (result.isFinal)` statement:
+```
+else {
+    UnitySendMessage("SpeechToText", "onPartialResults", [transcriptText UTF8String]);
+}
+```
+2. Update *VoiceController* script. Open the script with *Visual Studio* and replace the source code with:
 
- 
+```C#
+using TextSpeech;
+using UnityEngine;
+
+public class VoiceController : MonoBehaviour {
+
+    const string LANG_CODE = "en-US";
+    [SerializeField]
+    AudioController audioController;
+
+    void Start() {
+        Setup(LANG_CODE);
+
+        SpeechToText.instance.onResultCallback = OnFinalSpeechResult;
+        SpeechToText.instance.onPartialResultCallback = OnPartialSpeechResult;
+
+        StartListening();
+    }
+
+    void StartListening() {
+        SpeechToText.instance.StartRecording();
+    }
+
+    void StopListening() {
+        SpeechToText.instance.StopRecording();
+    }
+
+    void OnFinalSpeechResult(string result) {
+        if (result == "Hello") {
+            audioController.SayHello();
+        }
+
+        StartListening();
+    }
+
+    void OnPartialSpeechResult(string result) {
+        StopListening();
+    }
+
+    void Setup(string languageCode) {
+        SpeechToText.instance.Setting(languageCode);
+    }
+
+}
+```
+3. Connect the *AudioController* with the *AudioController*
+4. Remove the speech UI elements: *ToogleSpeech*, *Text* and the Hello *Button*
+
+Build your application and test it. Now everytime you say *Hello*, your character will answer your greeting. 
+
 
 ## Upcoming tutorials
 - Gesture recognition

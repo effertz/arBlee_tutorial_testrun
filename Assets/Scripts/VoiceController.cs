@@ -1,25 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TextSpeech;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class VoiceController : MonoBehaviour {
 
     const string LANG_CODE = "en-US";
     [SerializeField]
-    Text uiText;
+    AudioController audioController;
 
     void Start() {
         Setup(LANG_CODE);
 
         SpeechToText.instance.onResultCallback = OnFinalSpeechResult;
-    }
+        SpeechToText.instance.onPartialResultCallback = OnPartialSpeechResult;
 
-    public void SetSpeechToTextActive(bool active) {
-        if (active) StartListening();
-        else StopListening();
+        StartListening();
     }
 
     void StartListening() {
@@ -31,11 +25,19 @@ public class VoiceController : MonoBehaviour {
     }
 
     void OnFinalSpeechResult(string result) {
-        uiText.text = result;
-        Debug.Log("OnFinalSpeechResult result: " + result);
+        if (result == "Hello") {
+            audioController.SayHello();
+        }
+
+        StartListening();
+    }
+
+    void OnPartialSpeechResult(string result) {
+        StopListening();
     }
 
     void Setup(string languageCode) {
         SpeechToText.instance.Setting(languageCode);
     }
+
 }
