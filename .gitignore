@@ -47,6 +47,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.mm.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -58,5 +59,4 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-Assets/Imported/Plugins/PingAK9/iOS/SpeechUtteranceViewController.mm.meta
-Assets/Imported/.DS_Store
+.DS_Store
