@@ -6,6 +6,8 @@ public class VoiceController : MonoBehaviour {
     const string LANG_CODE = "en-US";
     [SerializeField]
     AudioController audioController;
+    [SerializeField]
+    Movement movement;
 
     void Start() {
         Setup(LANG_CODE);
@@ -25,15 +27,31 @@ public class VoiceController : MonoBehaviour {
     }
 
     void OnFinalSpeechResult(string result) {
-        if (result == "Hello") {
-            audioController.SayHello();
-        }
+
+        HandleText(result);
 
         StartListening();
     }
 
     void OnPartialSpeechResult(string result) {
         StopListening();
+    }
+
+    void HandleText(string result) {
+
+        switch (result) {
+            case "Hello":
+                audioController.SayHello();
+                break;
+            case "Walk":
+                movement.SetWalking(true);
+                break;
+            case "Stop":
+                movement.SetWalking(false);
+                break;
+            default:
+                break;
+        }
     }
 
     void Setup(string languageCode) {

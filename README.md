@@ -704,10 +704,44 @@ public class VoiceController : MonoBehaviour {
 
 }
 ```
-3. Connect the *AudioController* with the *AudioController*
+3. Connect the *AudioController* script with the *VoiceController* script: Select the your character in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *VoiceController* section. Open the dropdown for the *Audio Controller* object, switch to *Scene* tab and select your character.
 4. Remove the speech UI elements: *ToogleSpeech*, *Text* and the Hello *Button*
 
 Build your application and test it. Now everytime you say *Hello*, your character will answer your greeting. 
+
+Next let's **remove** also the **Walk UI element** and make the character to **start and stop walking after** you **command** it by saying *Walk* and *Stop*.
+
+1. Remove the Walk *Toggle* UI element fron the *Canvas*
+1. Remove the *Toggle* methods from the *VisibilityController* script 
+1. Remove the *Toggle* method and the Game Object from the *UIManager* script 
+1. Add a new member to the *VoiceController* script
+```C#
+    [SerializeField]
+    Movement movement;
+```
+5. Add a new method to the *VoiceController* script
+```C#
+    void HandleText(string result) {
+
+        switch (result) {
+            case "Hello":
+                audioController.SayHello();
+                break;
+            case "Walk":
+                movement.SetWalking(true);
+                break;
+            case "Stop":
+                movement.SetWalking(false);
+                break;
+            default:
+                break;
+        }
+    }
+```
+6. Call this method from the *OnFinalSpeechResult* and remove the if-statement which we added there before.
+7. Connect the *Movement* script with the *VoiceController* script: Select the your character in the *Hierarchy* window, go to the *Inspector* window, scroll down to the *VoiceController* section. Open the dropdown for the *Movement* object, switch to *Scene* tab and select your character.
+
+Build your application and test it. Now everytime you say *Walk*, your character will start walking and stop when you say *Stop*. 
 
 
 ## Upcoming tutorials
