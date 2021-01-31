@@ -15,7 +15,7 @@ This is a collection of tutorials to demonstrate how to create an Augmented Real
   * [Add UI elements to your app](#add-ui-elements-to-your-app)
   * [Add Sound to your app](#add-sound-to-your-app)
   * [Speech Recognition](#speech-recognition)
-  * [Upcoming tutorials](#upcoming-tutorials)
+  * [Gesture Recognition](#gesture-recognition)
 
 </details>
 
@@ -571,7 +571,7 @@ Build your app again and test your changes. Now everytime you press the *Hello* 
 Build your app again and test your changes.
 
 ## Speech Recognition
-It would be nice if we could better interact with the character, for example talk. We could make say Hello when somebody says Hello to it. To be able to do it we need Speech Recognition. There are different way to implement Speech Recognition with Unity. I decided to use [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android). It is working with iOS and also with the newest Unity releases. It also uses the iOS internal Speech Recognition Engine. These are all big pluses in my eyes.
+It would be nice, if we could better interact with the character, for example talk. We could make it say Hello, when somebody says Hello to it. To be able to do it, we need Speech Recognition. There are different ways to implement Speech Recognition with Unity. I decided to use [PingAK9 Plugin](https://github.com/PingAK9/Speech-And-Text-Unity-iOS-Android). It can be used with iOS and supports the newest Unity releases. It also uses the iOS internal Speech Recognition Engine. These are all big pros.
 
 Let's start:
 
@@ -743,6 +743,95 @@ Next let's **remove** also the **Walk UI element** and make the character to **s
 
 Build your application and test it. Now everytime you say *Walk*, your character will start walking and stop when you say *Stop*. 
 
+## Gesture recognition
 
-## Upcoming tutorials
-- Gesture recognition
+Another way to control your character could be through Gesture Recognition. We can make the character walk, as long you press on it, or make it greet you everytime you double click on it.
+
+1. Add a *Capsule Collider* component to your character
+1. Add a new *TouchController* script to your character and replace the source code with:
+```C#
+using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
+
+[RequireComponent(typeof(Collider))]
+public class TouchController : MonoBehaviour {
+    public UnityEvent OnSingleTap;
+    public UnityEvent OnDoubleTap;
+    public UnityEvent OnLongPressBegin;
+    public UnityEvent OnLongPressEnd;
+
+
+    float firstTapTime = 0f;
+    const float timeBetweenTaps = 0.5f;
+    const float shortestLongPress = 0.5f;
+    bool doubleTapInitialized;
+    bool longPressInProgress;
+    private IEnumerator LongPressCoroutine;
+
+
+    void OnMouseDown() {
+        LongPressCoroutine = LongPressRecognition();
+        StartCoroutine(LongPressCoroutine);
+    }
+
+    IEnumerator LongPressRecognition() {
+        yield return new WaitForSeconds(shortestLongPress);
+        LongPressBegin();
+    }
+
+    void StopLongPressRecognition() {
+        StopCoroutine(LongPressCoroutine);
+        longPressInProgress = false;
+    }
+
+    void OnMouseUp() {
+        Invoke("SingleTap", timeBetweenTaps);
+
+        if (longPressInProgress) LongPressEnd();
+        else StopLongPressRecognition();
+
+        if (!doubleTapInitialized) {
+            doubleTapInitialized = true;
+            firstTapTime = Time.time;
+        } else if (Time.time - firstTapTime < timeBetweenTaps) {
+            CancelInvoke("SingleTap");
+            DoubleTap();
+        }
+    }
+
+    void SingleTap() {
+        doubleTapInitialized = false;
+        if (OnSingleTap != null) {
+            OnSingleTap.Invoke();
+        }
+    }
+
+    void DoubleTap() {
+        doubleTapInitialized = false;
+        if (OnDoubleTap != null) {
+            OnDoubleTap.Invoke();
+        }
+    }
+
+    void LongPressBegin() {
+        longPressInProgress = true;
+        if (OnLongPressBegin != null) {
+            OnLongPressBegin.Invoke();
+        }
+    }
+
+    void LongPressEnd() {
+        longPressInProgress = false;
+        if (OnLongPressEnd != null) {
+            OnLongPressEnd.Invoke();
+        }
+    }
+}
+```
+3. Connect the *On Long Press Begin ()* method with your character and the  Movement.SetWalking method and check the checkbox.
+4. Connect the *On Long Press End ()* method with your character and the  Movement.SetWalking method and don't check the checkbox.
+5. Connect the *On Double Tap ()* method with your character and the  AudioController.SayHello method.
+6. Connect the *On Double Tap ()* method with your character and the  Animator.SetTrigger method and enter *Greet* to the Textbox.
+
+Build your application and test it.
