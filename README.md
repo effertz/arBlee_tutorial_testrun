@@ -1,27 +1,26 @@
 # How to create an AR mobile application with Unity
-This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. Which character it will be, is up to you. You will pick one from the [Mixamo](https://www.mixamo.com/) platform. Here are a few examples:
+This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. Which character it will be, is up to you. You will pick one from the [Mixamo](https://www.mixamo.com/) platform. But just so you get an idea, here are a few examples:
 
 <img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
 <details>
   <summary>Table of Contents</summary>
 
-  * [Environment Setup - Install required software](#environment-setup---install-required-software)
-  * [Project Setup - Create your first Unity project](#project-setup---create-your-first-unity-project)
-  * [Build your first Unity project](#build-your-first-unity-project)
-  * [Get to know XR and setup your project for it](#get-to-know-xr-and-setup-your-project-for-it)
-    + [Unity Documentation](#unity-documentation)
-  * [Create your character with Mixamo](#create-your-character-with-mixamo)
-  * [Add UI elements to your app](#add-ui-elements-to-your-app)
-  * [Add Sound to your app](#add-sound-to-your-app)
+  * [Environment Setup](#environment-setup---install-required-software)
+  * [Project Setup](#project-setup---create-your-first-unity-project)
+  * [Build your project](#build-your-first-unity-project)
+  * [XR Setup](#get-to-know-xr-and-setup-your-project-for-it)
+  * [Create a character with Mixamo](#create-your-character-with-mixamo)
+  * [UI elements to control your app](#add-ui-elements-to-your-app)
+  * [Sound](#add-sound-to-your-app)
   * [Speech Recognition](#speech-recognition)
   * [Gesture Recognition](#gesture-recognition)
 
 </details>
 
-I assume that you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
+I assume you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
-This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. The set of software versions used to compile the application can be found [here](Docs/Versions.md).
+This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. I am always trying to use the newest Unity version to build the application build in this tutorial. The latest software versions  can be found [here](Docs/Versions.md).
 
 So, let’s start:
 
@@ -48,6 +47,8 @@ Next step is to get to know **XR**. XR is an umbrella term encompassing **augmen
 **Augmented Reality AR** is reality augmented (or enhanced) with virtual items. Unity Editor provides a special module to support AR: AR Foundation. [What is Unity AR Foundation?](Docs/WhatIsUnityARFoundationYouTubeVideo.md) is a very good tutorial about AR in Unity. It also shows how to **setup AR in Unity** and how to **create markers in AR**, which is the first step to be able to place a character of your choice into the environment around you.
 
 I'm strongly relaying on the AR Tutorial, but not following it completely. Therefore, feel free to watch it, it is very helpful, but for the app we are creating, follow the steps described below.
+
+[AR Unity Samples](https://github.com/Unity-Technologies/arfoundation-samples) on GitHub are the best way to learn more about the current Unity AR possibilities. These samples are updated with each Unity version, therefore are always up-to-date.
 
 First, we will **setup AR components** in your project (Note: for **Android** setup follow the instructions on [YouTube](https://www.youtube.com/watch?v=FGh7f-PaGQc) staring around minute 7:40):
 
@@ -158,6 +159,8 @@ public class PlacementIndicator : MonoBehaviour {
     }
 }
 ```
+To learn more about the Unity scripting framework and the provided components check the Unity [Manual](https://docs.unity3d.com/Manual/index.html) and [Scripting API](https://docs.unity3d.com/ScriptReference/index.html).
+
 4. Don’t forget to save your changes to the C# script file.
 5. Connect the *Plane* game object to the script: select the *PlacementIndicator* game object in the *Project* window, go to *Inspector* window, open the *Indicator Icon* dropdown and select *Plane*.
 6. Add *AR Raycast Manager* to the *AR Session Origin*: Select *AR Session Origin* in the *Project* window, go to the *Inspector* window, click *Add Component*, search for *AR Raycast Manager* and select it.
@@ -293,11 +296,6 @@ public class PlacementIndicator : MonoBehaviour {
 4. Connect the CubeObject object with the script: select the *PlacementIndicator* game object in the *Project* window, go to *Inspector* window, open the *Object To Place* dropdown and select *CubeObject*.
 
 [Build](Docs/Build.md) again and test your changes. Once the placement indicator is visible, touch the screen. Every time you touch the screen the cube will appear at the position of the indicator.
-
-### Unity Documentation
-To learn more about the Unity scripting framework and the provided components check the following:
-- Unity [Manual](https://docs.unity3d.com/Manual/index.html) and [Scripting API](https://docs.unity3d.com/ScriptReference/index.html).
-- [AR Unity Samples](https://github.com/Unity-Technologies/arfoundation-samples) on GitHub. They are the best way to learn more about the current Unity AR possibilities. These samples are updated with each Unity version, therefore are always up-to-date.
 
 ## Create your character with Mixamo
 
