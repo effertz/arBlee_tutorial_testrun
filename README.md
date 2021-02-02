@@ -1,5 +1,5 @@
 # How to create an AR mobile application with Unity
-This is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. The app will [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. Which character it will be, is up to you. You will pick one from the [Mixamo](https://www.mixamo.com/) platform. But just so you get an idea, here are a few examples:
+This project is a collection of tutorials to demonstrate how to create an Augmented Reality app for your mobile phone using Unity. Below you will instructions how to [spawn a character](https://youtu.be/eL_8jF1a4lk) into the environment around you. Which character it will be, is up to you. You will pick one from the [Mixamo](https://www.mixamo.com/) platform. But just so you get an idea, here are a few examples:
 
 <img src="Docs/Screenshots/Character-Examples.png" alt="drawing" width="600"/>
 
@@ -20,7 +20,7 @@ This is a collection of tutorials to demonstrate how to create an Augmented Real
 
 I assume you are familiar with programming, [IDEs](https://en.wikipedia.org/wiki/Integrated_development_environment) and GitHub. You know the basics and can apply them to new programming languages like C#, Unity development environment and projects in GitHub. No worries, really only basics are needed and for anything you don’t know yet, you can find a tutorial on [YouTube](https://www.youtube.com) or [Unity learn](https://unity.com/learn). 
 
-This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. I am always trying to use the newest Unity version to build the application build in this tutorial. The latest software versions  can be found [here](Docs/Versions.md).
+This tutorial was created using a MacBook and iPhone, but you can also use your Android mobile phone and / or a Windows Desktop or Laptop. However, to create an app for iPhone, you need to install [Xcode](https://developer.apple.com/xcode/) on Apple hardware. Doing it on a Windows machine is possible, but complicated and not part of this tutorial. I am always trying to use the newest Unity version to build the application build in this tutorial. The latest software versions I used can be found [here](Docs/Versions.md).
 
 So, let’s start:
 
@@ -30,7 +30,7 @@ To setup your computer for this project follow the steps from [this page](Docs/E
 
 ## Project Setup - Create your first Unity project
 
-In this tutorial, we will create a mobile application, but if you are new to Unity, you might consider creating a **simple desktop project**. This will help you to get familiar with Unity Editor navigation and functionality. [Get started with Unity - Creator Kit: Beginner Code](https://learn.unity.com/tutorial/get-started-with-creator-kit-beginner-code) and [Create with code](https://learn.unity.com/course/create-with-code) are 2 tutorials, which cover creating basic desktop applications.
+In this tutorial, we will create a mobile application, but if you are new to Unity, you might consider creating a **simple desktop project** first, just to get familiar with the Unity Editor and learn some basics, like for example Unity Editor navigation. [Get started with Unity - Creator Kit: Beginner Code](https://learn.unity.com/tutorial/get-started-with-creator-kit-beginner-code) and [Create with code](https://learn.unity.com/course/create-with-code) are 2 tutorials, which cover creating basic desktop applications.
 
 To setup a mobile project follow the steps from [this page](Docs/ProjectSetup.md).
 
@@ -42,7 +42,7 @@ Now you can build and run your app on a mobile device, but your application is a
 
 ## Get to know XR and setup your project for it
 
-Next step is to get to know **XR**. XR is an umbrella term encompassing **augmented**, **virtual**, and **mixed reality**. An extensive tutorial on XR can be found [here](https://learn.unity.com/tutorial/what-is-xr).
+XR is an umbrella term encompassing **augmented**, **virtual**, and **mixed reality**. An extensive tutorial on XR can be found [here](https://learn.unity.com/tutorial/what-is-xr).
 
 **Augmented Reality AR** is reality augmented (or enhanced) with virtual items. Unity Editor provides a special module to support AR: AR Foundation. [What is Unity AR Foundation?](Docs/WhatIsUnityARFoundationYouTubeVideo.md) is a very good tutorial about AR in Unity. It also shows how to **setup AR in Unity** and how to **create markers in AR**, which is the first step to be able to place a character of your choice into the environment around you.
 

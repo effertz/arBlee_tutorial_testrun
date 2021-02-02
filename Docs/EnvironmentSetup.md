@@ -1,5 +1,5 @@
 # Environment Setup
-Install required software to create and build a mobile Unity application for iPhone or Android.
+Install required software to create and build a mobile Unity application for iOS or Android.
 
 ## Install **Unity**
 1. Create an account on [https://unity.com/](https://unity.com/)
@@ -13,7 +13,7 @@ Install **Visual Studio** for Mac for editing the C# source code. This isn’t s
     1. [Get started with Visual Studio and Unity](https://docs.microsoft.com/en-us/visualstudio/gamedev/unity/get-started/getting-started-with-visual-studio-tools-for-unity?pivots=macos)
     1. Optional: [Use Visual Studio Tools for Unity](https://docs.microsoft.com/en-us/visualstudio/gamedev/unity/get-started/using-visual-studio-tools-for-unity?pivots=macos)
 
-## iPhone specific
+## iOS specific
 1. Open Unity Hub and download the respective iOS Build Support module for your Unity version.
 1. To be able to install your app later on iPhone you need **Xcode**. Download it from [App Store](https://developer.apple.com/xcode/). Note, this will take quite some time.
 
